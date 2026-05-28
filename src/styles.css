@@ -93,4 +93,20 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
+  .card-lift {
+    transition: transform 500ms cubic-bezier(.2,.7,.2,1), box-shadow 500ms, border-color 500ms;
+  }
+  .card-lift:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    box-shadow: 0 18px 40px -12px oklch(0.78 0.12 80 / 0.35), 0 0 0 1px oklch(0.78 0.12 80 / 0.5);
+  }
+  @keyframes wa-ping {
+    0% { transform: scale(1); opacity: .7; }
+    80%, 100% { transform: scale(1.8); opacity: 0; }
+  }
+  .wa-ping::before {
+    content: ""; position: absolute; inset: 0; border-radius: 9999px;
+    background: #25D366; animation: wa-ping 1.8s cubic-bezier(0,0,.2,1) infinite;
+  }
 }
