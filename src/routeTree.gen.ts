@@ -9,8 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProtecaoPatrimonialRouteImport } from './routes/protecao-patrimonial'
+import { Route as PlanejamentoSucessorioRouteImport } from './routes/planejamento-sucessorio'
+import { Route as PensaoAlimenticiaRouteImport } from './routes/pensao-alimenticia'
+import { Route as InventarioRouteImport } from './routes/inventario'
+import { Route as DivorcioEPartilhaRouteImport } from './routes/divorcio-e-partilha'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ProtecaoPatrimonialRoute = ProtecaoPatrimonialRouteImport.update({
+  id: '/protecao-patrimonial',
+  path: '/protecao-patrimonial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanejamentoSucessorioRoute = PlanejamentoSucessorioRouteImport.update({
+  id: '/planejamento-sucessorio',
+  path: '/planejamento-sucessorio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PensaoAlimenticiaRoute = PensaoAlimenticiaRouteImport.update({
+  id: '/pensao-alimenticia',
+  path: '/pensao-alimenticia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventarioRoute = InventarioRouteImport.update({
+  id: '/inventario',
+  path: '/inventario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DivorcioEPartilhaRoute = DivorcioEPartilhaRouteImport.update({
+  id: '/divorcio-e-partilha',
+  path: '/divorcio-e-partilha',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +49,102 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/divorcio-e-partilha': typeof DivorcioEPartilhaRoute
+  '/inventario': typeof InventarioRoute
+  '/pensao-alimenticia': typeof PensaoAlimenticiaRoute
+  '/planejamento-sucessorio': typeof PlanejamentoSucessorioRoute
+  '/protecao-patrimonial': typeof ProtecaoPatrimonialRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/divorcio-e-partilha': typeof DivorcioEPartilhaRoute
+  '/inventario': typeof InventarioRoute
+  '/pensao-alimenticia': typeof PensaoAlimenticiaRoute
+  '/planejamento-sucessorio': typeof PlanejamentoSucessorioRoute
+  '/protecao-patrimonial': typeof ProtecaoPatrimonialRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/divorcio-e-partilha': typeof DivorcioEPartilhaRoute
+  '/inventario': typeof InventarioRoute
+  '/pensao-alimenticia': typeof PensaoAlimenticiaRoute
+  '/planejamento-sucessorio': typeof PlanejamentoSucessorioRoute
+  '/protecao-patrimonial': typeof ProtecaoPatrimonialRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/divorcio-e-partilha'
+    | '/inventario'
+    | '/pensao-alimenticia'
+    | '/planejamento-sucessorio'
+    | '/protecao-patrimonial'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/divorcio-e-partilha'
+    | '/inventario'
+    | '/pensao-alimenticia'
+    | '/planejamento-sucessorio'
+    | '/protecao-patrimonial'
+  id:
+    | '__root__'
+    | '/'
+    | '/divorcio-e-partilha'
+    | '/inventario'
+    | '/pensao-alimenticia'
+    | '/planejamento-sucessorio'
+    | '/protecao-patrimonial'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DivorcioEPartilhaRoute: typeof DivorcioEPartilhaRoute
+  InventarioRoute: typeof InventarioRoute
+  PensaoAlimenticiaRoute: typeof PensaoAlimenticiaRoute
+  PlanejamentoSucessorioRoute: typeof PlanejamentoSucessorioRoute
+  ProtecaoPatrimonialRoute: typeof ProtecaoPatrimonialRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/protecao-patrimonial': {
+      id: '/protecao-patrimonial'
+      path: '/protecao-patrimonial'
+      fullPath: '/protecao-patrimonial'
+      preLoaderRoute: typeof ProtecaoPatrimonialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planejamento-sucessorio': {
+      id: '/planejamento-sucessorio'
+      path: '/planejamento-sucessorio'
+      fullPath: '/planejamento-sucessorio'
+      preLoaderRoute: typeof PlanejamentoSucessorioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pensao-alimenticia': {
+      id: '/pensao-alimenticia'
+      path: '/pensao-alimenticia'
+      fullPath: '/pensao-alimenticia'
+      preLoaderRoute: typeof PensaoAlimenticiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventario': {
+      id: '/inventario'
+      path: '/inventario'
+      fullPath: '/inventario'
+      preLoaderRoute: typeof InventarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/divorcio-e-partilha': {
+      id: '/divorcio-e-partilha'
+      path: '/divorcio-e-partilha'
+      fullPath: '/divorcio-e-partilha'
+      preLoaderRoute: typeof DivorcioEPartilhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +157,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DivorcioEPartilhaRoute: DivorcioEPartilhaRoute,
+  InventarioRoute: InventarioRoute,
+  PensaoAlimenticiaRoute: PensaoAlimenticiaRoute,
+  PlanejamentoSucessorioRoute: PlanejamentoSucessorioRoute,
+  ProtecaoPatrimonialRoute: ProtecaoPatrimonialRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
